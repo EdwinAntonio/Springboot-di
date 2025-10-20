@@ -3,12 +3,32 @@ package com.ingedwin.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
 import com.ingedwin.springboot.di.app.springboot_di.models.Product;
 import com.ingedwin.springboot.di.app.springboot_di.repositories.ProductRepository;
 
-public class ProductService {
+@Component
+public class ProductService implements ProductRepositoryInterface{
 
-    private ProductRepository repository = new ProductRepository();
+    /*
+     * El @Autowired funciona cada vez que nosotros marcamos con la notación @Component para decirle que esa
+     * clase marcada como componente será inyectada en alguna otra clase para hacer uso de sus metodos e
+     * incluso variables, por tal motivo usar Autowired es lo mismo a instanciar una clase, ejemplo 
+     * 
+     * private ProductRepository repository = new ProductRepository();
+     * 
+     * Eso es igual a 
+     * 
+     * @Autorwired
+     * private ProductRepository repository;
+     */
+
+
+    @Autowired
+    private ProductRepository repository;
 
     /* 
      * Las clases de tipo service nos ayuda a poder modifical los datos una vez son pedidos desde el repositorio, de esta manera en esta parte
@@ -16,6 +36,7 @@ public class ProductService {
      * con los que vamos a trabajar
      */
 
+    @Override
     public List<Product> findAll(){
         return repository.findAll().stream().map(p -> {
 
@@ -32,8 +53,9 @@ public class ProductService {
         }).collect(Collectors.toList());
     }
 
+    @Override
     public Product findById(Long id){
-        return repository.finByiD(id);
+        return repository.findById(id);
     }
 
 }
