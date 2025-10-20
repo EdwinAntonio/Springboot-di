@@ -7,5 +7,5 @@ public interface ProductServiceInterface {
 
     List<Product> findAll();
 
-    Product findByid(Long id);
+    Product findById(Long id);
 }

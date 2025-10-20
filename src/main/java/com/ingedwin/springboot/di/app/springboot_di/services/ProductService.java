@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
 import com.ingedwin.springboot.di.app.springboot_di.models.Product;
-import com.ingedwin.springboot.di.app.springboot_di.repositories.ProductRepository;
 
 @Component
 public class ProductService implements ProductRepositoryInterface{
@@ -28,7 +27,7 @@ public class ProductService implements ProductRepositoryInterface{
 
 
     @Autowired
-    private ProductRepository repository;
+    private ProductRepositoryInterface repository;
 
     /* 
      * Las clases de tipo service nos ayuda a poder modifical los datos una vez son pedidos desde el repositorio, de esta manera en esta parte
