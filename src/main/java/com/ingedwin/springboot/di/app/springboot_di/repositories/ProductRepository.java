@@ -3,7 +3,7 @@ package com.ingedwin.springboot.di.app.springboot_di.repositories;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
 import com.ingedwin.springboot.di.app.springboot_di.models.Product;
@@ -14,7 +14,7 @@ import com.ingedwin.springboot.di.app.springboot_di.models.Product;
  * de cada metodo creado que cumpla con TODOS los metodos de la interfaz
  */
 
- @Component
+ @Repository
 public class ProductRepository implements ProductRepositoryInterface {
     
     private List<Product> data;
