@@ -14,7 +14,7 @@ import com.ingedwin.springboot.di.app.springboot_di.models.Product;
  * de cada metodo creado que cumpla con TODOS los metodos de la interfaz
  */
 
- @Repository
+@Repository
 public class ProductRepository implements ProductRepositoryInterface {
     
     private List<Product> data;

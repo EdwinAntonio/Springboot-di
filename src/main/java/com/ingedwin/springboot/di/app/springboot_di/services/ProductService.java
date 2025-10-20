@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
+import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductServiceInterface;
 import com.ingedwin.springboot.di.app.springboot_di.models.Product;
 
 @Service
-public class ProductService implements ProductRepositoryInterface{
+public class ProductService implements ProductServiceInterface{
 
     /*
      * El @Autowired funciona cada vez que nosotros marcamos con la notación @Component para decirle que esa
