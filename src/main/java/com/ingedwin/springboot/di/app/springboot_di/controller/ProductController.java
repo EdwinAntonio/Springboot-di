@@ -17,6 +17,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/api")
 public class ProductController {
 
+    /*
+     * En caso de tener una interfaz que este implementada a 2 clases diferentes, hay que usar la notacion
+     * @Primary o @Qualifier en las clases que manden a llamar a esa interfaz, para darle una prioridad a 
+     * cual de las 2 clases tomara como prioridad la interfaz que estamos injectando
+     * 
+     * @Autowired
+     * @Qualifier("productServiceInterface")
+     * 
+     */
+
     @Autowired
     private ProductServiceInterface productService;
 

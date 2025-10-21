@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
 import com.ingedwin.springboot.di.app.springboot_di.models.Product;
@@ -12,9 +13,17 @@ import com.ingedwin.springboot.di.app.springboot_di.models.Product;
  * El implements que hace referencia hacia una interfaz es una estructura OBLIGADA que los repositorios 
  * deben de Si o Si implementarlas en sus metodos y pueden tener de manera opcional el @Override arriba
  * de cada metodo creado que cumpla con TODOS los metodos de la interfaz
+ * 
+ * Utilizamos el @RequestScope para instanciar una nueva peticion cada vez que se mande a llamar 
+ * a una DB y siempre traer datos frescos por request
+ * 
+ * Si usamors @SessionScope los datos que utilicemos seguiran siendo usados hasta que se cierre el navegador
+ *  o la pestaña donde estan usando nuestra API, puede funcionar muy bien para logins de usuarios
+ * 
  */
 
 @Repository
+@RequestScope
 public class ProductRepository implements ProductRepositoryInterface {
     
     private List<Product> data;

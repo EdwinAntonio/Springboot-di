@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
@@ -30,6 +31,9 @@ public class ProductService implements ProductServiceInterface{
     @Autowired
     private ProductRepositoryInterface repository;
 
+    @Value("${valor.config}")
+    private Double iva;
+
     /* 
      * Las clases de tipo service nos ayuda a poder modifical los datos una vez son pedidos desde el repositorio, de esta manera en esta parte
      * podemos modificar los datos con la lógica de negocios que queramos hacer, mientras que el servicio solo hace la lavor de pedir los datos
@@ -42,8 +46,8 @@ public class ProductService implements ProductServiceInterface{
 
             // El precio lo modificamos para sumarle un 10%, pero al ser Long, debemos de hacer la operacion con Double y despues
             // castear el valor para retornar un dato de tipo STREAM
-
-            Double price = p.getPrice()*1.10d;
+            
+            Double price = p.getPrice()* iva;
             p.setPrice(price.longValue());
             
             return p;
