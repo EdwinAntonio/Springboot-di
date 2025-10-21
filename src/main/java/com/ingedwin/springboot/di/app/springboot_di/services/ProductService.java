@@ -6,12 +6,14 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductRepositoryInterface;
 import com.ingedwin.springboot.di.app.springboot_di.interfaces.ProductServiceInterface;
 import com.ingedwin.springboot.di.app.springboot_di.models.Product;
 
 @Service
+@RequestScope
 public class ProductService implements ProductServiceInterface{
 
     /*
@@ -59,7 +61,11 @@ public class ProductService implements ProductServiceInterface{
 
     @Override
     public Product findById(Long id){
-        return repository.findById(id);
+        try {
+            return repository.findById(id);
+        } catch (Exception e) {
+            return new Product(0L, "No existe el producto", 0L);
+        }
     }
 
 }

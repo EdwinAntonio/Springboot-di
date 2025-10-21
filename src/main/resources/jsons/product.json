@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Playstation 5",
+        "price": 8000
+    },
+    {
+        "id": 2,
+        "name": "CPU",
+        "price": 5000
+    },
+    {
+        "id": 3,
+        "name": "Xbox One",
+        "price": 10000
+    },
+    {
+        "id": 4,
+        "name": "PC Gamer",
+        "price": 15000
+    }
+]

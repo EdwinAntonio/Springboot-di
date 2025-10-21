@@ -37,11 +37,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public Product getProductId(@PathVariable Long id) {
-        try {
             return this.productService.findById(id);
-        } catch (NullPointerException e) {
-            return new Product(0L, "No existe Producto", 0L);
-        }
     }
     
 }
